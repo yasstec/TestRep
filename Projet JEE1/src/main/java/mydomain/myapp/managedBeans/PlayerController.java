@@ -1,16 +1,16 @@
 package mydomain.myapp.managedBeans;
 
 import java.io.Serializable;
+/*
+ * ManagedBean
+ */
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.validation.constraints.Null;
 
 import mydomain.myapp.dao.DAOImpl;
 import mydomain.myapp.dao.IDAO;
