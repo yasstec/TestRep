@@ -2,7 +2,8 @@ package mydomain.myapp.managedBeans;
 
 import java.io.Serializable;
 /*
- * ManagedBean
+ * ManagedBean 2
+ * 
  */
 import java.util.ArrayList;
 import java.util.List;
