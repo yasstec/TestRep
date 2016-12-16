@@ -11,7 +11,9 @@ import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+/*
+ * Entity Class Player
+ */
 @Entity
 @NamedQuery(name = "findAllPlayers", query = "SELECT p FROM Player p")
 public class Player implements Serializable {
