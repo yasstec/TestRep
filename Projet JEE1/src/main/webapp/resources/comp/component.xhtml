@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:comp="http://java.sun.com/jsf/composite/comp"
+	>
+<h:body>
+
+
+
+    <composite:interface>
+
+    	<composite:attribute name="nameLable" />
+    	<composite:attribute name="nameValue" />
+    	<composite:attribute name="emailLable" />
+    	<composite:attribute name="emailValue" />
+
+   	<composite:attribute name="registerButtonText" />
+    <composite:attribute name="registerButtonAction" />
+
+    </composite:interface>
+
+    <composite:implementation>
+
+	<h:form>
+
+			#{cc.attrs.nameLable} :
+			<h:inputText id="name" value="#{cc.attrs.nameValue}" />
+			<br></br>
+			#{cc.attrs.emailLable} :
+			<h:inputText id="email" value="#{cc.attrs.emailValue}" />
+			<br></br><br></br>
+		<h:commandButton action="#{cc.attrs.registerButtonAction}" value="#{cc.attrs.registerButtonText}"
+		/>
+
+	</h:form>
+
+    </composite:implementation>
+</h:body>	
+ <comp:component />	  
+
+</html>

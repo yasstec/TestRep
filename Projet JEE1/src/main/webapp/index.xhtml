@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Players Management - Gestion des joueurs</title>
+</h:head>
+<h:body >
+	<h:form >	
+		<h:panelGrid columns="2">
+		Language :
+		<h:selectOneMenu value="#{language.localeCode}" onchange="submit()" 
+				valueChangeListener="#{language.countryLocaleCodeChanged}">
+				<f:selectItems value="#{language.countriesInMap}" />
+			</h:selectOneMenu>
+		</h:panelGrid>
+</h:form><br></br>
+<h:form>
+		<h:dataTable var="elm" value="#{playerController.playerList}" border="1" >
+			<h:column>
+				<f:facet name="header"> <label>#{mes.table_col_last_name} </label> </f:facet>
+				<h:inputText value="#{elm.nom}" rendered="#{elm.editable}" />
+				<h:outputText value="#{elm.nom}" rendered="#{not elm.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"> <label>#{mes.table_col_first_name} </label>  </f:facet>
+				<h:inputText value="#{elm.prenom}" rendered="#{elm.editable}" />
+				<h:outputText value="#{elm.prenom}" rendered="#{not elm.editable}" />			
+			</h:column>
+			<h:column>
+				<f:facet name="header"> #{mes.table_col_position} </f:facet>
+				<h:inputText value="#{elm.position}" rendered="#{elm.editable}" />
+				<h:outputText value="#{elm.position}" rendered="#{not elm.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"> #{mes.table_col_number} </f:facet>
+				<h:inputText value="#{elm.numero}" rendered="#{elm.editable}" />
+				<h:outputText value="#{elm.numero}" rendered="#{not elm.editable}" size="5" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<h:commandLink value="Edit" action="#{playerController.editAction(elm)}" rendered="#{not elm.editable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header"></f:facet>
+				<h:commandLink value="Delete" action="#{playerController.deleteAction(elm)}" />
+			</h:column>
+		</h:dataTable>
+		<br></br>
+		<h:commandButton value="Save" action="#{playerController.saveChange}"></h:commandButton>
+		<h:commandButton value="Reset" action="#{playerController.resetChange}"></h:commandButton>
+	</h:form>
+	<p><label>#{mes.form_title}</label></p>
+	
+	 <h:form>
+ <table border="0">
+ <tr>
+ <td><h:outputLabel value="#{mes.form_last_name} : "/></td>
+ <td>
+ <h:inputText id="nom" value="#{playerController.player.nom}" />
+ </td>
+ </tr>
+ <tr>
+ <td><h:outputLabel value="#{mes.form_first_name} : "/></td>
+ <td>
+ <h:inputText value="#{playerController.player.prenom}"/>
+ </td>
+ </tr>
+ <tr>
+ <td><h:outputLabel value="#{mes.form_position} : "/></td>
+ <td>
+ <h:inputText value="#{playerController.player.position}"/>
+ </td>
+ </tr>
+ <tr>
+ <td><h:outputLabel id="number" value="#{mes.form_number} : "/></td>
+ <td>
+ <h:inputText id="nb" value="#{playerController.player.numero}" size="1" >
+ </h:inputText>
+ </td>
+ </tr>
+ </table>
+ <h:commandButton value="#{mes.form_btn_submit} " action="#{playerController.addNewPlayer}"/>
+ 	        <h:messages globalOnly="true" infoClass="info" />
+  <h:message id="nomMessage" for="nom" errorClass="erreur" ></h:message>
+  <h:message id="numberMessage" for="nb" errorClass="erreur" ></h:message>
+ 
+ </h:form>
+</h:body>
+</html>
